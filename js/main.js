@@ -248,6 +248,7 @@ function startTimer(duration, display) {
 
 // Adds a word to wordArr
 function addWord() {
+    // If the input isn't an empty string
     if(document.getElementById("add-word-input").value != "") {
         wordArr.push(document.getElementById("add-word-input").value.match(/[\w,.?!@#$%^&*()_+-=~`'\\]+/g)[0]);
         document.getElementById("add-word-input").value = "";
