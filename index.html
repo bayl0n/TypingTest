@@ -1,0 +1,68 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TypingTest</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <!--The Main Header-->
+    <header>
+        <h1 id="title">TypingTest</h1>
+        <span>by Nathan Baylon</span>
+    </header>
+
+    <!--Main Section-->
+    <div id="type-div">
+        <div class="type" id="display-box">
+            <!-- Words will be generated here -->
+        </div>
+
+        <div id="input-div">
+            <input type="text" name="type-user" class="type" id="type-box">
+            <span id="timer"></span>
+            <button class="type" id="reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- Results table -->
+    <div id="results-div">
+        <h3>Results Table</h3>
+
+        <table>
+            <tr>
+                <th>WPM</th>
+                <th>Corrent Words</th>
+                <th>Incorrect Words</th>
+            </tr>
+
+            <tr>
+                <td id="wpm-data"></td>
+                <td id="correct-words-data"></td>
+                <td id="incorrect-words-data"></td>
+            </tr>
+
+            <tr>
+                <th>Keystrokes</th>
+                <th>Correct</th>
+                <th>Incorrect</th>
+                <th>Accuracy</th>
+            </tr>
+
+            <tr>
+                <td id="keystrokes-data"></td>
+                <td id="correct-strokes-data"></td>
+                <td id="incorrect-strokes-data"></td>
+                <td id="accuracy-data"></td>
+            </tr>
+        </table> 
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/words.js"></script>
+</body>
+
+</html>
