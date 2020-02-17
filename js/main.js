@@ -69,6 +69,7 @@ inputBox.onkeyup = function () {
             inputBox.value = "";
         } else if (inputBox.value == focusElement.innerText + " ") { // If the word is correct
             // Update classes
+            focusElement.className = focusElement.className.replace(/(?:^|\s)typo(?!\S)/g, ''); // If the word is autocorrected, the word can have both the 'correct' and a 'typo' classes
             focusElement.className = focusElement.className.replace(/(?:^|\s)focus(?!\S)/g, '');
             focusElement.className = focusElement.className.replace(/(?:^|\s)incomplete(?!\S)/g, ' complete')
             focusElement.className += " correct";
