@@ -11,7 +11,7 @@ body {
 header {
     background-color: #24384b;
     padding: 0.5rem;
-    border-bottom: 0.3rem solid #FFF;
+    border-bottom: 1rem solid rgb(47, 77, 102);
 }
 
 #title {
@@ -21,6 +21,27 @@ header {
 
 #sub-title {
     color: rgb(179, 179, 179)
+}
+
+#settings {
+    background-color: rgb(192, 192, 230);
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 0.5rem;
+}
+
+.feature {
+    display: inline-block;
+    margin: 0.5rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    padding: 0.3rem;
+}
+
+.feature-btn {
+    color: rgb(255, 255, 255);
+    background-color: #428bca;
+    border: 0.1rem solid #357ebd;
 }
 
 #results-container {
@@ -79,7 +100,6 @@ td {
     border-radius: 0.4rem;
     padding: 0.7rem;
     margin-bottom: 1rem;
-
 }
 
 #display-box {

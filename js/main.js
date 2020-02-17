@@ -1,7 +1,7 @@
 /*
 Created by Nathan Baylon. Feb 2020.
 
-TODO: Convert the display text to an array that contains words and add the following features:
+FINISHED (17/02/2020): Convert the display text to an array that contains words and add the following features:
     - Change the generate button to change the words within the display-box
     - Highlight each word when the user is currently typing it rather than the whole sentence
         - If the user is up to the word but hasn't typed it make the background grey
@@ -10,6 +10,16 @@ TODO: Convert the display text to an array that contains words and add the follo
     - Add a one minute timer to time the user typing
     - Calculate the WPM of the user by appending the typed words to an array then ( amt-of-words / time-taken-to-type )
     - Create a results table of the users stats
+After finishing: Didn't need to convert the display text to an array as I used html class attributes to loop through the display text
+
+TODO: Create a settings toolbar with the following features (See which features are worth keeping):
+    - A feature where you can add words to the word array
+    - Deleting words from the array?
+    - Right and left handed typing
+    - Changing the timer?
+    - Changing the amount of words in the display box?
+    - Hiding the results table
+
 */
 
 
@@ -51,6 +61,10 @@ window.onload = function () {
 
      // Adds an event listener to the reset button which calls resetTest() when it is clicked
     document.getElementById("reset").addEventListener("click", function(){resetTest()});
+    document.getElementById("toggle-results-btn").addEventListener("click", function(){toggleResults()});
+    document.getElementById("add-word-btn").addEventListener("click", function(){addWord()});
+
+    // console.log((":;;;;//\\\\'''ppoopiopi".match(/[\w,.?!@#$%^&*()_+-=~`'\\]+/g)[0]));
 }
 
 // FUNCTIONS //
@@ -230,4 +244,22 @@ function startTimer(duration, display) {
             testRun = false;
         }
     }, 1000);
+}
+
+// Adds a word to wordArr
+function addWord() {
+    wordArr.push(document.getElementById("add-word-input").value.match(/[\w,.?!@#$%^&*()_+-=~`'\\]+/g)[0]);
+    document.getElementById("add-word-input").value = "";
+    resetTest();
+}
+
+// Toggles the visibility of the results table
+function toggleResults() {
+    if(document.getElementById("toggle-results-btn").innerText == "Hide Stats") {
+        document.getElementById("results-container").style.display = "none";
+        document.getElementById("toggle-results-btn").innerText = "Show Stats";
+    } else {
+        document.getElementById("results-container").style.display = "block";
+        document.getElementById("toggle-results-btn").innerText = "Hide Stats";
+    }
 }
