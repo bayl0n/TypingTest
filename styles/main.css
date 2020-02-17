@@ -2,8 +2,56 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+body {
+    margin: 0;;
+    background-color: rgb(207, 227, 253);
+    width: 100%;
+}
+
+header {
+    background-color: #24384b;
+    padding: 0.5rem;
+    border-bottom: 0.3rem solid #FFF;
+}
+
+#title {
+    color: rgb(255, 255, 255);
+    display: inline-block;
+}
+
+#sub-title {
+    color: rgb(179, 179, 179)
+}
+
+#results-container {
+    text-align: center;
+}
+
+#results-display {
+    display: inline-block;
+    padding: 1rem;
+    background-color: rgb(192, 192, 230);
+    text-align: center;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+}
+
+#results-heading {
+    color: rgb(255, 255, 255);
+    background-color: #3c4d5c;
+    padding: 0.5rem;
+}
+
+th {
+    padding: 0.5rem;
+    color: rgb(255, 255, 255);
+    background-color: #3c4d5c;
+}
+
 td {
     text-align: center;
+    background-color: #0cc7d5;
 }
 
 .type {
@@ -12,18 +60,20 @@ td {
     padding: 0.3rem;
 }
 
-#title {
-    display: inline-block;
+#type-div {
+    background-color: #A7C8E7;
+    border-radius: 0.3rem;
+    padding: 1rem;
+    margin: 1rem;
 }
 
-#type-div {
-    background-color: rgb(64, 224, 208);
-    padding: 1rem;
+#type-box {
+    max-width: 50%;
 }
 
 #timer {
     color: rgb(255, 255, 255);
-    background-color: rgb(20, 70, 65);
+    background-color: #3c4d5c;
     font-size: 1.3rem;
     border: 1px solid rgb(30, 148, 156);
     border-radius: 0.4rem;
@@ -33,18 +83,25 @@ td {
 }
 
 #display-box {
-    border: 1px solid rgb(192, 192, 230);
+    border: 1px solid rgb(100, 100, 189);
     border-radius: 0.5rem;
     background-color: rgb(255, 255, 255);
-    margin-bottom: 1rem;
+    margin: 1rem;
     padding: 1rem;
     text-align: center;
 }
 
 #input-div {
-    background-color: rgb(69, 189, 177);
+    background-color: #0cc7d5;
     padding: 0.5rem;
+    border-radius: 0.4rem;
     text-align: center;
+}
+
+#reset {
+    color: rgb(255, 255, 255);
+    background-color: #428bca;
+    border: 0.1rem solid #357ebd;
 }
 
 .focus {

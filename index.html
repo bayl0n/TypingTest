@@ -12,7 +12,7 @@
     <!--The Main Header-->
     <header>
         <h1 id="title">TypingTest</h1>
-        <span>by Nathan Baylon</span>
+        <span id="sub-title">by Nathan Baylon</span>
     </header>
 
     <!--Main Section-->
@@ -29,36 +29,40 @@
     </div>
 
     <!-- Results table -->
-    <div id="results-div">
-        <h3>Results Table</h3>
+    <div id="results-container">
+        <div id="results-display">
+            <h3 id="results-heading">Typing Stats</h3>
 
-        <table>
-            <tr>
-                <th>WPM</th>
-                <th>Corrent Words</th>
-                <th>Incorrect Words</th>
-            </tr>
+            <table id="results-table">
+                <tr>
+                    <th>WPM</th>
+                    <th>Corrent Words</th>
+                    <th>Incorrect Words</th>
+                    <th></th>
+                </tr>
 
-            <tr>
-                <td id="wpm-data"></td>
-                <td id="correct-words-data"></td>
-                <td id="incorrect-words-data"></td>
-            </tr>
+                <tr>
+                    <td id="wpm-data"></td>
+                    <td id="correct-words-data"></td>
+                    <td id="incorrect-words-data"></td>
+                    <td></td>
+                </tr>
 
-            <tr>
-                <th>Keystrokes</th>
-                <th>Correct</th>
-                <th>Incorrect</th>
-                <th>Accuracy</th>
-            </tr>
+                <tr>
+                    <th>Keystrokes</th>
+                    <th>Correct</th>
+                    <th>Incorrect</th>
+                    <th>Accuracy</th>
+                </tr>
 
-            <tr>
-                <td id="keystrokes-data"></td>
-                <td id="correct-strokes-data"></td>
-                <td id="incorrect-strokes-data"></td>
-                <td id="accuracy-data"></td>
-            </tr>
-        </table> 
+                <tr>
+                    <td id="keystrokes-data"></td>
+                    <td id="correct-strokes-data"></td>
+                    <td id="incorrect-strokes-data"></td>
+                    <td id="accuracy-data"></td>
+                </tr>
+            </table>
+        </div>
     </div>
 
     <script type="module" src="js/main.js"></script>

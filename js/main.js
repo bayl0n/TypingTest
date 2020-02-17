@@ -18,7 +18,7 @@ TODO: Convert the display text to an array that contains words and add the follo
 // The pool of words that can be randomly generated
 import { wordArr } from "./words.js";
 
-const WORD_AMT = 13; // The amount of words in a row
+const WORD_AMT = 15; // The amount of words in a row
 const ROW_AMT = 2; // The amount of words in the display box
 const WORD_TOTAL = WORD_AMT * ROW_AMT; // The total amount of words displayed
 let timerDuration = 60; // Timer duration in seconds
@@ -69,7 +69,7 @@ inputBox.onkeyup = function () {
             inputBox.value = "";
         } else if (inputBox.value == focusElement.innerText + " ") { // If the word is correct
             // Update classes
-            focusElement.className = focusElement.className.replace(/(?:^|\s)typo(?!\S)/g, ''); // If the word is autocorrected, the word can have both the 'correct' and a 'typo' classes
+            focusElement.className = focusElement.className.replace(/(?:^|\s)typo(?!\S)/g, ''); // If the word is autocorrected, the word can have both the 'correct' and 'typo' classes, so remove the class just in case
             focusElement.className = focusElement.className.replace(/(?:^|\s)focus(?!\S)/g, '');
             focusElement.className = focusElement.className.replace(/(?:^|\s)incomplete(?!\S)/g, ' complete')
             focusElement.className += " correct";
