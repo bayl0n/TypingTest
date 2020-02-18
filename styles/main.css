@@ -8,6 +8,10 @@ body {
     width: 100%;
 }
 
+#toggle-timer {
+    display: none;
+}
+
 header {
     background-color: #24384b;
     padding: 0.5rem;
@@ -118,7 +122,7 @@ td {
     text-align: center;
 }
 
-#reset {
+#reset-btn {
     color: rgb(255, 255, 255);
     background-color: #428bca;
     border: 0.1rem solid #357ebd;

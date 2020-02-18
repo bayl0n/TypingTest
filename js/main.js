@@ -19,7 +19,7 @@ TODO: Create a settings toolbar with the following features (See which features 
     - Changing the timer?
     - Changing the amount of words in the display box?
     - Hiding the results table
-
+ 
 */
 
 
@@ -28,10 +28,11 @@ TODO: Create a settings toolbar with the following features (See which features 
 // The pool of words that can be randomly generated
 import { wordArr } from "./words.js";
 
-const WORD_AMT = 15; // The amount of words in a row
-const ROW_AMT = 2; // The amount of words in the display box
-const WORD_TOTAL = WORD_AMT * ROW_AMT; // The total amount of words displayed
+const WORD_AMT = 30; // The amount of words in the display box
 let timerDuration = 60; // Timer duration in seconds
+
+// We use slice because customArr = wordArr just references the same location in memory (changing customArr with change wordArr), so we need to assign customArr to a copy of wordArr using .slice(0)
+let customArr = wordArr.slice(0);
 
 let inputBox = document.getElementById("type-box");
 let displayText = document.getElementById("display-text");
@@ -57,14 +58,15 @@ let testRun = false;
 // ON LOAD //
 
 window.onload = function () {
-    resetTest(); //Initial reset
+    resetTest(customArr); //Initial reset
 
-     // Adds an event listener to the reset button which calls resetTest() when it is clicked
-    document.getElementById("reset").addEventListener("click", function(){resetTest()});
-    document.getElementById("toggle-results-btn").addEventListener("click", function(){toggleResults()});
-    document.getElementById("add-word-btn").addEventListener("click", function(){addWord()});
+     // Adds event listeners to the corresponding buttons when clicked
+    document.getElementById("reset-btn").addEventListener("click", function(){resetTest(customArr)}); // Resets test
+    document.getElementById("toggle-results-btn").addEventListener("click", function(){toggleResults()}); // Toggles table visibility
 
-    // console.log((":;;;;//\\\\'''ppoopiopi".match(/[\w,.?!@#$%^&*()_+-=~`'\\]+/g)[0]));
+    document.getElementById("add-word-btn").addEventListener("click", function(){addWord()}); // Adds a word to the word pool
+
+    document.getElementById("reset-pool-btn").addEventListener("click", function(){resetPool()}); // Removes all custom words
 }
 
 // FUNCTIONS //
@@ -164,7 +166,7 @@ function compareString() {
     }
 }
 
-//Generates random words from a given array
+// Generates random words from a given array
 function generateRandomWord(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
@@ -173,11 +175,8 @@ function generateRandomWord(arr) {
 function generateTest() {
     displayBox.innerHTML = "";
     inputBox.value = "";
-    for (let i = 0; i < ROW_AMT; i++) {
-        for (let k = 0; k < WORD_AMT; k++) {
-            displayBox.innerHTML += '<span class="type incomplete">' + generateRandomWord(wordArr) + '</span> ';
-        }
-        //displayBox.innerHTML += "<br>";
+    for (let i = 0; i < WORD_AMT; i++) {
+            displayBox.innerHTML += '<span class="type incomplete">' + generateRandomWord(customArr) + '</span> ';
     }
 
     document.getElementsByClassName("incomplete")[0].className += " focus";
@@ -185,6 +184,7 @@ function generateTest() {
     focusElement = document.getElementsByClassName("focus")[0];
 }
 
+// Reset the stats displayed in the table
 function resetStats() {
     wpm = 0;
     correctWords = 0;
@@ -246,11 +246,11 @@ function startTimer(duration, display) {
     }, 1000);
 }
 
-// Adds a word to wordArr
+// Adds a word to a given word array
 function addWord() {
     // If the input isn't an empty string
     if(document.getElementById("add-word-input").value != "") {
-        wordArr.push(document.getElementById("add-word-input").value.match(/[\w,.?!@#$%^&*()_+-=~`'\\]+/g)[0]);
+        customArr.push(document.getElementById("add-word-input").value.match(/[\w,.?!@#$%^&*()_+-=~`'\\]+/g)[0]);
         document.getElementById("add-word-input").value = "";
         resetTest();
     }
@@ -264,5 +264,14 @@ function toggleResults() {
     } else {
         document.getElementById("results-container").style.display = "block";
         document.getElementById("toggle-results-btn").innerText = "Hide Stats";
+    }
+}
+
+// Removes all customs words from customArr
+function resetPool() {
+    // If the input isn't an empty string
+    if(document.getElementById("add-word-input").value != "") {
+        customArr = wordArr.slice(0);
+        generateTest();
     }
 }
