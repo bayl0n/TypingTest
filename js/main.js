@@ -215,7 +215,6 @@ function resetStats() {
 
 // Reset a test and its stats
 function resetTest() {
-
     resetStats();
     generateTest();
 }
