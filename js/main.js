@@ -31,8 +31,8 @@ import { wordArr } from "./words.js";
 const WORD_AMT = 30; // The amount of words in the display box
 let timerDuration = 60; // Timer duration in seconds
 
-// We use slice because customArr = wordArr just references the same location in memory (changing customArr with change wordArr), so we need to assign customArr to a copy of wordArr using .slice(0)
-let customArr = wordArr.slice(0);
+// customArr becomes a copy of wordArr due to how assignment works for arrays
+let customArr = [...wordArr];
 
 let inputBox = document.getElementById("type-box");
 let displayText = document.getElementById("display-text");
@@ -51,7 +51,7 @@ let accuracy = keystrokes == 0 ? NaN : correctStrokes / keystrokes; // If keystr
 
 let interval = null;
 
-// Test flag
+// Test flag that checks if a timer is running
 
 let testRun = false;
 
@@ -60,8 +60,8 @@ let testRun = false;
 window.onload = function () {
     resetTest(customArr); //Initial reset
 
-     // Adds event listeners to the corresponding buttons when clicked
-    document.getElementById("reset-btn").addEventListener("click", function(){resetTest(customArr)}); // Resets test
+    // Adds event listeners to the corresponding buttons when clicked
+    document.getElementById("reset-btn").addEventListener("click", function(){resetTest()}); // Resets test
     document.getElementById("toggle-results-btn").addEventListener("click", function(){toggleResults()}); // Toggles table visibility
 
     document.getElementById("add-word-btn").addEventListener("click", function(){addWord()}); // Adds a word to the word pool
@@ -74,16 +74,16 @@ window.onload = function () {
 // When a key goes up, check that the value in the type-box is equal to the display text
 inputBox.onkeyup = function () {
 
-    if(testRun == false) {
+    if(testRun === false) {
         resetStats();
         startTimer(timerDuration, displayTimer);
     }
 
     if (inputBox.value.match(/\s/)) {    // If there is whitespace in the input box
 
-        if (inputBox.value == " ") { // If the user enters only whitespace, clear the inputBox
+        if (inputBox.value === " ") { // If the user enters only whitespace, clear the inputBox
             inputBox.value = "";
-        } else if (inputBox.value == focusElement.innerText + " ") { // If the word is correct
+        } else if (inputBox.value === focusElement.innerText + " ") { // If the word is correct
             // Update classes
             focusElement.className = focusElement.className.replace(/(?:^|\s)typo(?!\S)/g, ''); // If the word is autocorrected, the word can have both the 'correct' and 'typo' classes, so remove the class just in case
             focusElement.className = focusElement.className.replace(/(?:^|\s)focus(?!\S)/g, '');
@@ -124,7 +124,7 @@ inputBox.onkeyup = function () {
             }
         }
 
-    } else if (inputBox.value != focusElement.innerText.slice(0, inputBox.value.length)) {   // If the value of the inputBox is not equal to the focus element characters up to the inputBox value's length
+    } else if (inputBox.value !== focusElement.innerText.slice(0, inputBox.value.length)) {   // If the value of the inputBox is not equal to the focus element characters up to the inputBox value's length
     
         // Incorrect Keystroke
 
@@ -137,7 +137,7 @@ inputBox.onkeyup = function () {
         if (!focusElement.className.match(/(?:^|\s)typo(?!\S)/g)) {
             focusElement.className += " typo";
         }
-    } else if (inputBox.value == focusElement.innerText.slice(0, inputBox.value.length)) {   // If the input is correct, make sure that the incorrect tag is removed
+    } else if (inputBox.value === focusElement.innerText.slice(0, inputBox.value.length)) {   // If the input is correct, make sure that the incorrect tag is removed
 
         // Correct Keystroke
         if(inputBox.value != "") { // Prevents counting a blank backspace as a correct keystroke
@@ -153,13 +153,13 @@ inputBox.onkeyup = function () {
     document.getElementById("keystrokes-data").innerText = keystrokes;
 
     // Update accuracy
-    accuracy = keystrokes == 0 ? NaN : correctStrokes / keystrokes;
+    accuracy = keystrokes === 0 ? NaN : correctStrokes / keystrokes;
     document.getElementById("accuracy-data").innerText = (accuracy * 100).toFixed(2) + "%";
 }
 
 // When the submit button is clicked
 function compareString() {
-    if (inputBox.value == displayText.innerText) {
+    if (inputBox.value === displayText.innerText) {
         document.getElementById("message").innerHTML = "Correct!";
     } else {
         document.getElementById("message").innerHTML = "Incorrect!";
@@ -192,11 +192,11 @@ function resetStats() {
     keystrokes = 0;
     correctStrokes = 0;
     incorrectStrokes = 0;
-    accuracy = keystrokes == 0 ? NaN : correctStrokes / keystrokes;
+    accuracy = keystrokes === 0 ? NaN : correctStrokes / keystrokes;
     testRun = false;
     clearInterval(interval);
 
-    var timer = timerDuration, minutes, seconds;
+    let timer = timerDuration, minutes, seconds;
 
     minutes = parseInt(timer / 60, 10);
     seconds = parseInt(timer % 60, 10);
@@ -249,7 +249,7 @@ function startTimer(duration, display) {
 // Adds a word to a given word array
 function addWord() {
     // If the input isn't an empty string
-    if(document.getElementById("add-word-input").value != "") {
+    if(document.getElementById("add-word-input").value !== "") {
         customArr.push(document.getElementById("add-word-input").value.match(/[\w,.?!@#$%^&*()_+-=~`'\\]+/g)[0]);
         document.getElementById("add-word-input").value = "";
         resetTest();
@@ -258,7 +258,7 @@ function addWord() {
 
 // Toggles the visibility of the results table
 function toggleResults() {
-    if(document.getElementById("toggle-results-btn").innerText == "Hide Stats") {
+    if(document.getElementById("toggle-results-btn").innerText === "Hide Stats") {
         document.getElementById("results-container").style.display = "none";
         document.getElementById("toggle-results-btn").innerText = "Show Stats";
     } else {
@@ -269,9 +269,6 @@ function toggleResults() {
 
 // Removes all customs words from customArr
 function resetPool() {
-    // If the input isn't an empty string
-    if(document.getElementById("add-word-input").value != "") {
-        customArr = wordArr.slice(0);
-        generateTest();
-    }
+    customArr = [...wordArr];
+    generateTest();
 }
