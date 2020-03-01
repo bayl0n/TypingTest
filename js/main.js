@@ -34,10 +34,10 @@ let timerDuration = 60; // Timer duration in seconds
 // customArr becomes a copy of wordArr due to how assignment works for arrays
 let customArr = [...wordArr];
 
-let inputBox = document.getElementById("type-box");
-let displayText = document.getElementById("display-text");
-let displayBox = document.getElementById("display-box");
-let displayTimer = document.getElementById("timer");
+const inputBox = document.getElementById("type-box");
+const displayText = document.getElementById("display-text");
+const displayBox = document.getElementById("display-box");
+const displayTimer = document.getElementById("timer");
 let focusElement = null;
 
 // Typing Stats
@@ -49,6 +49,7 @@ let incorrectStrokes = 0;
 let keystrokes = correctStrokes + incorrectStrokes;
 let accuracy = keystrokes == 0 ? NaN : correctStrokes / keystrokes; // If keystrokes is equal to 0 than it is NaN, else calculate percentage
 
+// Timer interval
 let interval = null;
 
 // Test flag that checks if a timer is running
