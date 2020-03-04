@@ -60,6 +60,9 @@ let testRun = false;
 // ON LOAD //
 
 window.onload = function () {
+
+    inputBox.focus();
+
     resetTest(customArr); //Initial reset
 
     // Adds event listeners to the corresponding buttons when clicked
