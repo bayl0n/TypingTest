@@ -31,16 +31,16 @@ import { wordArr } from "./words.js";
 const WORD_AMT = 30; // The amount of words in the display box
 let timerDuration = 60; // Timer duration in seconds
 
-// customArr becomes a copy of wordArr due to how assignment works for arrays
+// customArr becomes a copy of wordArr due to how assignment works for arrays, can be altered by user
 let customArr = [...wordArr];
 
+// Commonly used DOM elements
 const inputBox = document.getElementById("type-box");
-const displayText = document.getElementById("display-text");
 const displayBox = document.getElementById("display-box");
 const displayTimer = document.getElementById("timer");
-let focusElement = null;
+let focusElement = null; // mutable
 
-// Typing Stats
+// Typing Stats - all these veriables are mutable
 let correctWords = 0;
 let incorrectWords = 0;
 let wpm = 0;
@@ -50,6 +50,7 @@ let keystrokes = correctStrokes + incorrectStrokes;
 let accuracy = keystrokes == 0 ? NaN : correctStrokes / keystrokes; // If keystrokes is equal to 0 than it is NaN, else calculate percentage
 
 // Timer interval
+
 let interval = null;
 
 // Test flag that checks if a timer is running
@@ -66,6 +67,13 @@ window.onload = function () {
     document.getElementById("toggle-results-btn").addEventListener("click", function(){toggleResults()}); // Toggles table visibility
 
     document.getElementById("add-word-btn").addEventListener("click", function(){addWord()}); // Adds a word to the word pool
+    document.getElementById("add-word-input").addEventListener("keyup", function(event) {     // Executes addWord() on enter when in text input
+        if (event.keyCode === 13) {
+            event.preventDefault();
+
+            document.getElementById("add-word-btn").click();
+        }
+    })
 
     document.getElementById("reset-pool-btn").addEventListener("click", function(){resetPool()}); // Removes all custom words
 }
@@ -158,15 +166,6 @@ inputBox.onkeyup = function () {
     document.getElementById("accuracy-data").innerText = (accuracy * 100).toFixed(2) + "%";
 }
 
-// When the submit button is clicked
-function compareString() {
-    if (inputBox.value === displayText.innerText) {
-        document.getElementById("message").innerHTML = "Correct!";
-    } else {
-        document.getElementById("message").innerHTML = "Incorrect!";
-    }
-}
-
 // Generates random words from a given array
 function generateRandomWord(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
@@ -224,7 +223,7 @@ function resetTest() {
 function startTimer(duration, display) {
     duration--;
     testRun = true;
-    var timer = duration, minutes, seconds;
+    let timer = duration, minutes, seconds;
     interval = setInterval(function () {
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);

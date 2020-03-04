@@ -126,6 +126,7 @@ td {
     color: rgb(255, 255, 255);
     background-color: #428bca;
     border: 0.1rem solid #357ebd;
+    padding: 0.7rem;
 }
 
 .focus {
