@@ -4,7 +4,7 @@
 
 body {
     margin: 0;;
-    background-color: rgb(207, 227, 253);
+    background-color: rgb(232, 242, 255);
     width: 100%;
 }
 
@@ -19,7 +19,7 @@ header {
 }
 
 .main-container {
-    max-width: 1440px;
+    max-width: 1280px;
     margin: 0 auto;
 }
 
@@ -34,7 +34,7 @@ header {
 }
 
 #settings {
-    background-color: rgb(192, 192, 230);
+    background-color: #A7C8E7;
     padding: 1rem;
     margin: 1rem;
     border-radius: 0.5rem;
@@ -92,10 +92,10 @@ td {
 }
 
 #type-div {
-    background-color: #A7C8E7;
+    background-color: none;
     border-radius: 0.3rem;
-    padding: 1rem;
     margin: 1rem;
+    margin-top: 3rem;
 }
 
 #type-box {
@@ -116,13 +116,14 @@ td {
     border: 1px solid rgb(100, 100, 189);
     border-radius: 0.5rem;
     background-color: rgb(255, 255, 255);
-    margin: 1rem;
+    margin: 1rem 0;
     padding: 1rem;
     text-align: center;
+    line-height: 2.5rem;
 }
 
 #input-div {
-    background-color: #0cc7d5;
+    background-color: #A7C8E7;
     padding: 0.5rem;
     border-radius: 0.4rem;
     text-align: center;
