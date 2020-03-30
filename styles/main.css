@@ -14,13 +14,19 @@ body {
 
 header {
     background-color: #24384b;
-    padding: 0.5rem;
+    padding: 1rem 0.5rem;
     border-bottom: 1rem solid rgb(47, 77, 102);
+}
+
+.main-container {
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 #title {
     color: rgb(255, 255, 255);
     display: inline-block;
+    margin: 0;
 }
 
 #sub-title {

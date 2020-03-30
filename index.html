@@ -17,76 +17,79 @@
     </header>
 
     <!--Main Section-->
-    <div id="type-div">
-        <div class="type" id="display-box">
-            <!-- Words will be generated here -->
-        </div>
-        <div id="input-div">
-            <input type="text" name="type-user" class="type" id="type-box">
-            <span id="timer"></span>
-            <button class="type" id="reset-btn" title="Reset Test"><i class="fas fa-redo"></i></button>
-        </div>
-    </div>
 
-    <!-- Settings and Features -->
-    <div id="settings">
-        <div id="feature-container">
-            <div class="feature" id="add-word">
-                <input type="text" class="feature" id="add-word-input" placeholder="Add a word here">
-                <button class="feature-btn feature" id="add-word-btn"><i class="fas fa-plus-circle"></i> Add Word</button>
+    <main class="main-container">
+        <div id="type-div">
+            <div class="type" id="display-box">
+                <!-- Words will be generated here -->
             </div>
-
-            <div class="feature" id="reset-pool">
-                <button class="feature-btn feature" id="reset-pool-btn"><i class="fas fa-sync"></i> Reset Word Pool</button>
-            </div>
-
-            <div class="feature" id="toggle-timer">
-                <button class="feature-btn feature" id="">Use Timer</button>
-            </div>
-
-            <div class="feature" id="hide-results">
-                <button class="feature-btn feature" id="toggle-results-btn">Hide Stats</button>
+            <div id="input-div">
+                <input type="text" name="type-user" class="type" id="type-box">
+                <span id="timer"></span>
+                <button class="type" id="reset-btn" title="Reset Test"><i class="fas fa-redo"></i></button>
             </div>
         </div>
-    </div>
-
-    <!-- Results table -->
-    <div id="results-container">
-        <div id="results-display">
-            <h3 id="results-heading">Typing Stats</h3>
-
-            <table id="results-table">
-                <tr>
-                    <th>WPM</th>
-                    <th>Corrent Words</th>
-                    <th>Incorrect Words</th>
-                    <th></th>
-                </tr>
-
-                <tr>
-                    <td id="wpm-data"></td>
-                    <td id="correct-words-data"></td>
-                    <td id="incorrect-words-data"></td>
-                    <td></td>
-                </tr>
-
-                <tr>
-                    <th>Keystrokes</th>
-                    <th>Correct</th>
-                    <th>Incorrect</th>
-                    <th>Accuracy</th>
-                </tr>
-
-                <tr>
-                    <td id="keystrokes-data"></td>
-                    <td id="correct-strokes-data"></td>
-                    <td id="incorrect-strokes-data"></td>
-                    <td id="accuracy-data"></td>
-                </tr>
-            </table>
+    
+        <!-- Settings and Features -->
+        <div id="settings">
+            <div id="feature-container">
+                <div class="feature" id="add-word">
+                    <input type="text" class="feature" id="add-word-input" placeholder="Add a word here">
+                    <button class="feature-btn feature" id="add-word-btn"><i class="fas fa-plus-circle"></i> Add Word</button>
+                </div>
+    
+                <div class="feature" id="reset-pool">
+                    <button class="feature-btn feature" id="reset-pool-btn"><i class="fas fa-sync"></i> Reset Word Pool</button>
+                </div>
+    
+                <div class="feature" id="toggle-timer">
+                    <button class="feature-btn feature" id="">Use Timer</button>
+                </div>
+    
+                <div class="feature" id="hide-results">
+                    <button class="feature-btn feature" id="toggle-results-btn">Hide Stats</button>
+                </div>
+            </div>
         </div>
-    </div>
-
+    
+        <!-- Results table -->
+        <div id="results-container">
+            <div id="results-display">
+                <h3 id="results-heading">Typing Stats</h3>
+    
+                <table id="results-table">
+                    <tr>
+                        <th>WPM</th>
+                        <th>Corrent Words</th>
+                        <th>Incorrect Words</th>
+                        <th></th>
+                    </tr>
+    
+                    <tr>
+                        <td id="wpm-data"></td>
+                        <td id="correct-words-data"></td>
+                        <td id="incorrect-words-data"></td>
+                        <td></td>
+                    </tr>
+    
+                    <tr>
+                        <th>Keystrokes</th>
+                        <th>Correct</th>
+                        <th>Incorrect</th>
+                        <th>Accuracy</th>
+                    </tr>
+    
+                    <tr>
+                        <td id="keystrokes-data"></td>
+                        <td id="correct-strokes-data"></td>
+                        <td id="incorrect-strokes-data"></td>
+                        <td id="accuracy-data"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </main>
+    
     <script type="module" src="js/main.js"></script>
     <script type="module" src="js/words.js"></script>
 </body>
