@@ -47,5 +47,6 @@ export const wordArr = [
     "jumps",
     "over",
     "lazy",
-    "dog"
+    "dog",
+    "started"
 ];
