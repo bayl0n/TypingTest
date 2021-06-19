@@ -19,6 +19,7 @@ TODO: Create a settings toolbar with the following features (See which features 
     - Changing the timer?
     - Changing the amount of words in the display box?
     - Hiding the results table
+    - Light mode and dark mode
  
 */
 
